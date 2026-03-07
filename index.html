@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>♻ Smart Waste Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>♻ Smart Waste Management System</h1>
+        <p>IoT Based Garbage Monitoring & Collection Dashboard</p>
+    </header>
+
+    <div class="container">
+        <!-- Sensor Data Cards -->
+        <div class="card">
+            <h2>🌡 Temperature</h2>
+            <p id="temperature">-- °C</p>
+        </div>
+
+        <div class="card">
+            <h2>💧 Humidity</h2>
+            <p id="humidity">-- %</p>
+        </div>
+
+        <div class="card">
+            <h2>📏 Distance</h2>
+            <p id="distance">-- cm</p>
+        </div>
+
+        <div class="card">
+            <h2>🗑 Fill Level</h2>
+            <div class="progress">
+                <div id="fillBar"></div>
+            </div>
+            <p id="fillPercent">-- %</p>
+        </div>
+
+        <div class="card">
+            <h2>🟡 Lid Status</h2>
+            <p id="lidStatus">Closed</p>
+        </div>
+    </div>
+
+    <!-- Alert Box -->
+    <div id="alertBox"></div>
+
+    <!-- Sensor Graph Section -->
+    <section class="graphSection">
+        <h2>📊 Live Sensor Graph</h2>
+        <canvas id="sensorChart"></canvas>
+    </section>
+
+    <!-- Bins Monitoring Table -->
+   <section class="bins">
+    <h2>🗑️ Smart Bin Monitoring (10 Bins)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Bin</th>
+                <th>Fill %</th>
+                <th>Status</th>
+                <th>Temperature</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Bin A</td>
+                <td id="binA">--</td>
+                <td id="statusA">--</td>
+                <td id="tempA">--</td>
+            </tr>
+            <tr>
+                <td>Bin B</td>
+                <td id="binB">--</td>
+                <td id="statusB">--</td>
+                <td id="tempB">--</td>
+            </tr>
+            <tr>
+                <td>Bin C</td>
+                <td id="binC">--</td>
+                <td id="statusC">--</td>
+                <td id="tempC">--</td>
+            </tr>
+            <tr>
+                <td>Bin D</td>
+                <td id="binD">--</td>
+                <td id="statusD">--</td>
+                <td id="tempD">--</td>
+            </tr>
+            <tr>
+                <td>Bin E</td>
+                <td id="binE">--</td>
+                <td id="statusE">--</td>
+                <td id="tempE">--</td>
+            </tr>
+            <tr>
+                <td>Bin F</td>
+                <td id="binF">--</td>
+                <td id="statusF">--</td>
+                <td id="tempF">--</td>
+            </tr>
+            <tr>
+                <td>Bin G</td>
+                <td id="binG">--</td>
+                <td id="statusG">--</td>
+                <td id="tempG">--</td>
+            </tr>
+            <tr>
+                <td>Bin H</td>
+                <td id="binH">--</td>
+                <td id="statusH">--</td>
+                <td id="tempH">--</td>
+            </tr>
+            <tr>
+                <td>Bin I</td>
+                <td id="binI">--</td>
+                <td id="statusI">--</td>
+                <td id="tempI">--</td>
+            </tr>
+            <tr>
+                <td>Bin J</td>
+                <td id="binJ">--</td>
+                <td id="statusJ">--</td>
+                <td id="tempJ">--</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <!-- Route Optimization Section -->
+    <section class="route">
+        <h2>🚛 Optimized Collection Route</h2>
+        <p id="routeText">Calculating optimal route...</p>
+        <p id="routeStats"></p>
+    </section>
+
+    <!-- Map Section -->
+    <section class="mapSection">
+        <h2 style="text-align:center;">🗺️ Garbage Bin Locations & Truck Tracking</h2>
+        <div id="map"></div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <h2>📈 System Statistics</h2>
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>Total Bins</h3>
+                <p id="totalBins">4</p>
+            </div>
+            <div class="stat-card">
+                <h3>Bins Needing Collection</h3>
+                <p id="binsNeedingCollection">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Average Fill Level</h3>
+                <p id="avgFill">0%</p>
+            </div>
+            <div class="stat-card">
+                <h3>Collection Status</h3>
+                <p id="collectionStatus">✅ All Clear</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
